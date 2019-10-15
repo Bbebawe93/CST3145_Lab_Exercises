@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3 Lab </title>
+    <!-- Bootstrap cdn-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Vue.js development version cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1>Week 3 Lab</h1>
+    <div id="app" class="container">
+        <div class="row justify-content-center">
+            <div class="col-sm-6">
+                <h2 class="bg-secondary text-white">To-do List</h2>
+                <ul class="">
+                    <div v-for="task in todoList">
+                        <li>{{ task }}</li>
+                    </div>
+                </ul>
+                <input type="text" class="form-control" v-model="newTask" v-bind:placeholder="newTaskPlaceholder">
+                <button type="button" class="btn btn-outline-primary" v-on:click.prevent="addNewTask">Add New
+                    Task</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                todoList: ["Task1", "Task2", "Task3"],
+                newTask: "",
+                newTaskPlaceholder: "Add New Task"
+            },
+            methods: {
+                addNewTask: function () {
+                    this.todoList.push(this.newTask);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
